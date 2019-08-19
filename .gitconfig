@@ -1,0 +1,11 @@
+[user]
+	name = Lucas Dutra
+	email = ldutra98@gmail.com
+[alias]
+	s = status
+	a = add
+	c = commit
+	co = checkout
+	ft = fetch
+[core]
+	editor = vim
