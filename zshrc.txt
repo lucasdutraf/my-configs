@@ -134,28 +134,22 @@ zplugin light zsh-users/zsh-completions
 zplugin light zdharma/fast-syntax-highlighting
 export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-
-# conda
-export PATH=~/anaconda3/bin:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/linux/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/linux/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/linux/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/linux/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-# cuda
 export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
 #export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
 export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64
+export PATH=$PATH:$HOME/.poetry/bin
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+
+#venvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+. /home/linux/.local/bin/virtualenvwrapper.sh
+[ -f "/home/linux/.ghcup/env" ] && source "/home/linux/.ghcup/env" # ghcup-env
+
+#create cpp code
+function cps() {
+  mkdir $1 && touch $1/sol.cpp &&
+  echo "/**\n *    author: dutra\n *    created: $(date +"%d.%m.%Y") $(date +"%T")\n**/\n#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n\n  return 0;\n}" > $1/sol.cpp
+}
